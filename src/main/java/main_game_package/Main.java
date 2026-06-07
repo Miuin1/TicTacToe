@@ -7,7 +7,7 @@ public class Main {
 
         try {
 
-            TicTacToe t = new TicT acToe();
+            TicTacToe t = new TicTacToe();
             t.start();
 
         } catch (Exception e) {
