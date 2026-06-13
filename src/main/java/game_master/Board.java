@@ -19,11 +19,31 @@ public class Board implements BoardInterface{
 
     @Override
     public void clear(){
-        for(int x=0; x <= SIZE; x++){
-            for(int y=0; y <= SIZE; y++){
+        for(int x=0; x < SIZE; x++){
+            for(int y=0; y < SIZE; y++){
                 cells[x][y] = EMPTY;
             }
         }
+    }
+
+    @Override
+    public boolean isCellEmpty(int x, int y){
+        return cells[x][y] == EMPTY;
+    }
+
+    @Override
+    public void place(int x, int y, char marker){
+
+    }
+
+    @Override
+    public boolean isFull(){
+        return cells[SIZE][SIZE] == EMPTY;
+    }
+
+    @Override
+    public void print(){
+
     }
 
 
