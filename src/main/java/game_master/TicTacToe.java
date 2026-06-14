@@ -11,9 +11,9 @@ public class TicTacToe implements TicTacToeInterface {
     private PlayerInterface player1;
     private PlayerInterface player2;
     private PlayerInterface currentPlayer;
-    private BoardInterface board;
-    private char[][] moves;
-    private Scanner scanner;
+    private final BoardInterface board;
+    private final char[][] moves;
+    private final Scanner scanner;
 
     public TicTacToe(PlayerInterface player1, PlayerInterface player2, BoardInterface board) {
         this.player1 = player1;
@@ -21,6 +21,15 @@ public class TicTacToe implements TicTacToeInterface {
         this.board = board;
         this.moves = new char[3][3];
         this.scanner = new Scanner(System.in);
+        init();
+    }
+
+    public TicTacToe(PlayerInterface player1, PlayerInterface player2, BoardInterface board, Scanner scanner) {
+        this.player1 = player1;
+        this.player2 = player2;
+        this.board = board;
+        this.moves = new char[3][3];
+        this.scanner = scanner;
         init();
     }
 
