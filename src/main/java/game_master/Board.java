@@ -28,22 +28,48 @@ public class Board implements BoardInterface{
 
     @Override
     public boolean isCellEmpty(int x, int y){
-        return cells[x][y] == EMPTY;
+        if(cells[x-1][y-1] != EMPTY){
+            return false;
+        }else{
+            return true;
+        }
     }
 
     @Override
     public void place(int x, int y, char marker){
+        if(x>3 || y>3){
+            System.out.println("Not in field!");
+            return;
+        }
+        cells[x-1][y-1] = marker;
 
     }
 
     @Override
     public boolean isFull(){
-        return cells[SIZE][SIZE] == EMPTY;
+        for(int x=0; x < SIZE; x++){
+            for(int y=0; y < SIZE; y++){
+                if(cells[x][y] == EMPTY){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     @Override
     public void print(){
-
+        System.out.println("▁▁▁▁▁▁");
+        for(int x=0; x < SIZE; x++){
+            for(int y=0; y < SIZE; y++){
+                System.out.print("|");
+                System.out.print(cells[x][y]);
+                if(x==2){
+                    System.out.print("|\n");
+                }
+            }
+        }
+        System.out.println("▁▁▁▁▁▁");
     }
 
 
