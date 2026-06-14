@@ -109,20 +109,28 @@ public class TicTacToe implements TicTacToeInterface {
     }
 
     private boolean hasWinner() {
+        // Check all rows and columns.
+        // A player wins if all three fields in one row or one column contain the same non-empty marker.
         for (int i = 0; i < 3; i++) {
+            // Check row i: [i][0], [i][1], [i][2]
             if (moves[i][0] != ' ' && moves[i][0] == moves[i][1] && moves[i][1] == moves[i][2]) {
                 return true;
             }
 
+            // Check column i: [0][i], [1][i], [2][i]
             if (moves[0][i] != ' ' && moves[0][i] == moves[1][i] && moves[1][i] == moves[2][i]) {
                 return true;
             }
         }
 
+        // Check the main diagonal from top-left to bottom-right:
+        // [0][0], [1][1], [2][2]
         if (moves[0][0] != ' ' && moves[0][0] == moves[1][1] && moves[1][1] == moves[2][2]) {
             return true;
         }
 
+        // Check the second diagonal from top-right to bottom-left:
+        // [0][2], [1][1], [2][0]
         return moves[0][2] != ' ' && moves[0][2] == moves[1][1] && moves[1][1] == moves[2][0];
     }
 }
