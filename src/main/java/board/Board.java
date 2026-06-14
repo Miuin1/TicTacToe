@@ -1,4 +1,4 @@
-package game_master;
+package board;
 
 import main_game_package.BoardInterface;
 
