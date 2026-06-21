@@ -28,21 +28,30 @@ public class Board implements BoardInterface{
 
     @Override
     public boolean isCellEmpty(int x, int y){
-        if(cells[x-1][y-1] != EMPTY){
+        if (!isValidCoordinate(x, y)) {
             return false;
-        }else{
-            return true;
         }
+
+        return cells[x][y] == EMPTY;
     }
 
     @Override
     public void place(int x, int y, char marker){
-        if(x>3 || y>3){
+        if (!isValidCoordinate(x, y)) {
             System.out.println("Not in field!");
             return;
         }
-        cells[x-1][y-1] = marker;
 
+        if (!isCellEmpty(x, y)) {
+            System.out.println("Field is already occupied!");
+            return;
+        }
+
+        cells[x][y] = marker;
+    }
+
+    private boolean isValidCoordinate(int x, int y){
+        return x >= 0 && x < SIZE && y >= 0 && y < SIZE;
     }
 
     @Override
@@ -59,19 +68,14 @@ public class Board implements BoardInterface{
 
     @Override
     public void print(){
-        System.out.println("▁▁▁▁▁▁");
+        System.out.println("-------");
         for(int x=0; x < SIZE; x++){
             for(int y=0; y < SIZE; y++){
-                System.out.print("|");
-                System.out.print(cells[x][y]);
-                if(x==2){
-                    System.out.print("|\n");
-                }
+                System.out.print("|" + cells[x][y]);
             }
+            System.out.println("|");
         }
-        System.out.println("▁▁▁▁▁▁");
+        System.out.println("-------");
     }
-
-
 
 }
